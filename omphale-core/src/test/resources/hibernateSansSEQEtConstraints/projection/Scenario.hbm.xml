@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.domaine.projection">
+	<class name="Scenario" table="SCENAR_NON_LOC">
+		<id name="id" column="ID_SCENARIO" type="integer" length="15">
+			<generator class="native">
+				<param name="sequence">SEQ_SCENARIO</param>
+			</generator>
+		</id>
+		<property name="nom" column="NOM" type="string" length="20"></property>
+		<property name="standard" column="STANDARD" type="boolean">
+		</property>
+		<property name="libelle" column="LIBELLE" type="string"
+			length="50"></property>
+		<many-to-one name="utilisateur" class="fr.insee.omphale.domaine.Utilisateur"
+			column="ID_USER">
+		</many-to-one>
+		<property name="validation" column="VALIDATION" type="boolean">
+		</property>	
+		<property name="dateCreation" column="DATE_CREATION" type="timestamp"></property>
+		<set name="evolutionsDeScenario" inverse="true" fetch="subselect" cascade="all,delete-orphan">
+            <key>
+                <column name="ID_SCENARIO" not-null="true" />
+            </key>
+            <one-to-many class="EvolDeScenario" />
+        </set>
+	</class>
+</hibernate-mapping>
+

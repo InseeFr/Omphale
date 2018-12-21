@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.domaine.geographie">
+	<class name="Zonage" table="ZONAGE">
+		<id name="id" column="ID_ZONAGE" type="string" length="5">
+		</id>
+		<property name="nom" column="NOM" type="string" length="20" />
+		<property name="libelle" column="LIBELLE" type="string"
+			length="50" />
+		<property name="anneeValidation" column="ANNEE_VALIDATION"
+			type="int" length="4" />
+		<property name="etatValidation">
+			<column name="ETAT_VALIDATION" length="1" />
+			<type name="fr.insee.omphale.dao.StringValuedEnumType">
+				<param name="enum">
+					fr.insee.omphale.domaine.geographie.EEtatValidation
+				</param>
+			</type>
+		</property>
+		<set name="zones" table="ZONE_DE_ZONAGE">
+			<key foreign-key="ZONE_DE_ZONAGE_ETR_ZONA_0">
+				<column name="ZONAGE"></column>
+			</key>
+			<many-to-many class="Zone">
+				<column name="ZONE"></column>
+			</many-to-many>
+		</set>
+		<many-to-one name="utilisateur" class="fr.insee.omphale.domaine.Utilisateur"
+			column="ID_USER"></many-to-one>
+	</class>
+</hibernate-mapping>
+	

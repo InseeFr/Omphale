@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.generationDuPDF.domaine.geographie">
+	<class name="Zonage" table="ZONAGE">
+		<id name="id" column="ID_ZONAGE" type="string" length="5">
+			<generator class="native">
+				<param name="sequence">SEQ_ZONE_GEO4</param>
+			</generator>
+		</id>
+		<property name="nom" column="NOM" type="string" length="20" />
+		<property name="libelle" column="LIBELLE" type="string"
+			length="50" />
+		<property name="anneeValidation" column="ANNEE_VALIDATION"
+			type="int" length="4" />
+		<set name="zones" table="ZONE_DE_ZONAGE">
+			<key foreign-key="ZONE_DE_ZONAGE_ETR_ZONA_0">
+				<column name="ZONAGE"></column>
+			</key>
+			<many-to-many class="Zone" foreign-key="ZONE_DE_ZONAGE_ETR_ZONE_0">
+				<column name="ZONE"></column>
+			</many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>
+	

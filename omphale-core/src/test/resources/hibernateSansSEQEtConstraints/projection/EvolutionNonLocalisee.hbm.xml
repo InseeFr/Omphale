@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.domaine.projection">
+	<class name="EvolutionNonLocalisee" table="EVOL_NON_LOC">
+		<id name="id" column="ID_EVOL_NON_LOC" type="integer">
+			<generator class="native">
+				<param name="sequence">SEQ_EVOL_NON_LOCALISEE</param>
+			</generator>
+		</id>
+		<many-to-one name="utilisateur" class="fr.insee.omphale.domaine.Utilisateur"
+			column="ID_USER" foreign-key="EVOL_NON_LOC_ETR_USER_0"></many-to-one>
+		<property name="nom" column="NOM" type="string" length="20"></property>
+		<many-to-one name="typeEntite" class="TypeEntite" column="TYPE_ENTITE"
+			foreign-key="EVOL_NON_LOC_ETR_TENT_0"></many-to-one>
+		<many-to-one name="composante" class="Composante" column="COMPOSANTE"
+			foreign-key="EVOL_NON_LOC_ETR_TQT_0"></many-to-one>
+		<many-to-one name="hypothese" class="Hypothese" column="ID_HYPOTHESE"
+			foreign-key="EVOL_NON_LOC_ETR_UHY_0"></many-to-one>
+		<property name="ageDeb" column="AGE_DEB" type="integer"
+			length="3"></property>
+		<property name="sexeDeb" column="SEXE_DEB" type="integer"
+			length="1"></property>
+		<property name="anneeDeb" column="ANNEE_DEB" type="integer"
+			length="4"></property>
+		<property name="ageFin" column="AGE_FIN" type="integer"
+			length="3"></property>
+		<property name="sexeFin" column="SEXE_FIN" type="integer"
+			length="1"></property>
+		<property name="anneeFin" column="ANNEE_FIN" type="integer"
+			length="4"></property>
+		<property name="standard" column="STANDARD" type="boolean">
+		</property>
+		<property name="commentaire" column="COMMENTAIRE" type="string"
+			length="100"></property>
+		<many-to-one name="typeParam1" class="TypeParam" column="TYPE_PARAM1"
+			foreign-key="EVOL_NON_LOC_ETR_TPAR_1"></many-to-one>
+		<many-to-one name="typeParam2" class="TypeParam" column="TYPE_PARAM2"
+			foreign-key="EVOL_NON_LOC_ETR_TPAR_2"></many-to-one>
+		<many-to-one name="typeParam3" class="TypeParam" column="TYPE_PARAM3"
+			foreign-key="EVOL_NON_LOC_ETR_TPAR_3"></many-to-one>
+		<many-to-one name="typeParam4" class="TypeParam" column="TYPE_PARAM4"
+			foreign-key="EVOL_NON_LOC_ETR_TPAR_4"></many-to-one>
+		<property name="valParam1" column="VAL_PARAM1" type="double"></property>
+		<property name="valParam2" column="VAL_PARAM2" type="double"></property>
+		<property name="valParam3" column="VAL_PARAM3" type="double"></property>
+		<property name="valParam4" column="VAL_PARAM4" type="double"></property>
+		<many-to-one name="methode" class="MethodeEvolution"
+			column="METHODE_EVOL" foreign-key="EVOL_NON_LOC_ETR_MEV_0"></many-to-one>
+		<property name="dateCreation" column="DATE_CREATION" type="timestamp"></property>
+	</class>
+</hibernate-mapping>
+

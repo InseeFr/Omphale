@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.domaine.geographie">
+	<class name="TypeZoneStandard" table="TYPE_ZONE_STANDARD">
+		<id name="id" column="TYPE_ZONE_STANDARD" type="int" length="1">
+		</id>
+		<property name="libelle" column="LIBELLE" type="string"
+			length="50" />
+	</class>
+</hibernate-mapping>
+

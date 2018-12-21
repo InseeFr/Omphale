@@ -1,0 +1,71 @@
+<!DOCTYPE hibernate-configuration PUBLIC 
+	"-//Hibernate/Hibernate Configuration DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+	<!--
+		<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate
+		Configuration DTD//EN"
+		"file:c:\hibernate\hibernate-configuration-3.0.dtd">
+	-->
+<hibernate-configuration>
+	<session-factory>
+
+		<!--
+			utilisation de la config Insee : les paramètres d'appel sont dans
+			parametres.properties
+		-->
+		<property name="hibernate.connection.provider_class">
+			fr.insee.config.hibernate.InseeConnectionProvider</property>
+		<property name="hibernate.connection.insee.poolName">omphalePool</property>
+
+		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">false</property>
+		<property name="hibernate.cglib.use_reflection_optimizer">true</property>
+		<property name="hibernate.connection.autocommit">false</property>
+		<!-- property name="hbm2ddl.auto">create</property-->
+		<!--
+			Use thread-bound persistence context propagation, scoped to the
+			transaction
+		-->
+		<property name="current_session_context_class">thread</property>
+
+		
+		<mapping class="fr.insee.omphale.domaine.Utilisateur" />
+		
+		<mapping class="fr.insee.omphale.domaine.geographie.Commune" />
+		<mapping class="fr.insee.omphale.domaine.geographie.CommuneDependance" />
+		<mapping class="fr.insee.omphale.domaine.geographie.Departement" />
+		<mapping class="fr.insee.omphale.domaine.geographie.GroupeEtalon" />
+		<mapping class="fr.insee.omphale.domaine.geographie.GroupeEtalonId" />
+		<mapping class="fr.insee.omphale.domaine.geographie.Region" />
+		<mapping class="fr.insee.omphale.domaine.geographie.TypeZoneStandard" />
+		<mapping class="fr.insee.omphale.domaine.geographie.Zonage" />
+		<mapping class="fr.insee.omphale.domaine.geographie.Zone" />
+		<mapping class="fr.insee.omphale.domaine.geographie.ZoneClassique" />
+		<mapping class="fr.insee.omphale.domaine.geographie.ZoneStandardDepartement" />
+		<mapping class="fr.insee.omphale.domaine.geographie.ZoneStandardFrance" />
+		<mapping class="fr.insee.omphale.domaine.geographie.ZoneStandardAncienneRegion" />
+		<mapping class="fr.insee.omphale.domaine.geographie.ZoneStandardRegion" />
+		
+				
+		<mapping class="fr.insee.omphale.domaine.projection.Composante" />
+		<mapping class="fr.insee.omphale.domaine.projection.EvolDeScenario" />
+		<mapping class="fr.insee.omphale.domaine.projection.EvolDeScenarioId" />
+		<mapping class="fr.insee.omphale.domaine.projection.EvolutionBilocalisee" />
+		<mapping class="fr.insee.omphale.domaine.projection.EvolutionLocalisee" />
+		<mapping class="fr.insee.omphale.domaine.projection.EvolutionNonLocalisee" />
+		<mapping class="fr.insee.omphale.domaine.projection.Hypothese" />
+		<mapping class="fr.insee.omphale.domaine.projection.MethodeEvolution" />
+		<mapping class="fr.insee.omphale.domaine.projection.ParamMethodeEvolution" />
+		<mapping class="fr.insee.omphale.domaine.projection.Projection" />
+		<mapping class="fr.insee.omphale.domaine.projection.ProjectionLancee" />
+		<mapping class="fr.insee.omphale.domaine.projection.Scenario" />
+		<mapping class="fr.insee.omphale.domaine.projection.TypeEntite" />
+		<mapping class="fr.insee.omphale.domaine.projection.TypeParam" />
+		<mapping class="fr.insee.omphale.domaine.projection.ValeurCubeHypothese" />
+		<mapping class="fr.insee.omphale.domaine.projection.ValeurCubeHypotheseId" />
+		<mapping class="fr.insee.omphale.ihm.util.dataTable.ZoneAffichageDataTable" />
+		
+		
+	</session-factory>
+</hibernate-configuration>

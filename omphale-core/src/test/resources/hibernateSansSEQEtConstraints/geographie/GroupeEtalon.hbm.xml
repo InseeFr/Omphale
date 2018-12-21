@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.domaine.geographie">
+	<class name="GroupeEtalon" table="GROUPE_ETALON">
+		<composite-id name="id">
+			<key-many-to-one name="zonage" class="Zonage"
+				foreign-key="GROUPE_ETALON_ETR_ZONA_0">
+				<column name="ZONAGE" />
+			</key-many-to-one>
+			<key-property name="signature" column="SIGNATURE" type="string"
+				length="20" />
+		</composite-id>
+		<set name="zones" table="ZONE_DE_GROUPET">
+			<key foreign-key="ZONE_DE_GROUPET_ETR_GET_0">
+				<column name="ZONAGE" />
+				<column name="SIGNATURE" />
+			</key>
+			<many-to-many class="Zone" foreign-key="ZONE_DE_GROUPET_ETR_TZON_0">
+				<column name="ZONE" />
+			</many-to-many>
+		</set>
+		<set name="departements" table="DEPT_DE_GROUPET">
+			<key foreign-key="DEPT_DE_GROUPET_ETR_GET_0">
+				<column name="ZONAGE" />
+				<column name="SIGNATURE" />
+			</key>
+			<many-to-many class="Departement" foreign-key="DEPARTEMENT_IMPACT_ETR_DEPT_0">
+				<column name="DEPT" />
+			</many-to-many>
+		</set>
+		<set name="communesResiduelles" table="COMMUNE_RESIDUELLE">
+			<key foreign-key="COMMUNE_RESIDUELLE_ETR_GET_0">
+				<column name="ZONAGE" />
+				<column name="SIGNATURE" />
+			</key>
+			<many-to-many class="Commune" foreign-key="COMMUNE_RESIDUELLE_ETR_COM_0">
+				<column name="COMMUNE" />
+			</many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>
+

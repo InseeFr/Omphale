@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.domaine.projection">
+	<class name="ProjectionLancee" table="PROJECTION_LANCEE">
+		<id name="id" column="ID_PROJECTION_LANCEE" type="integer" length="15">
+			<generator class="native">
+				<param name="sequence">SEQ_PROJECTION_LANCEE</param>
+			</generator>
+		</id>
+		<many-to-one name="projection" class="fr.insee.omphale.domaine.projection.Projection"
+			column="ID_PROJECTION" foreign-key="ID_PROJECTION_ETR_PRJ_0"></many-to-one>
+		<property name="dateLancement" column="DATE_LANCEMENT" type="timestamp"></property>
+		<property name="dateDebutExec" column="DATE_DEBUT_EXEC" type="timestamp"></property>
+		<property name="dateExec" column="DATE_EXEC" type="timestamp"></property>
+		<property name="donnees" column="DONNEES" type="integer" length="1"></property>
+		<property name="codeRetour" column="CODE_RETOUR" type="string" length="5"></property>
+		<property name="message" column="MESSAGE" type="string" length="200"></property>
+		<property name="nbrZone" column="NBR_ZONE" type="integer" length="4"></property>
+	</class>
+</hibernate-mapping>
+

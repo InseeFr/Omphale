@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.domaine.geographie">
+	<class name="CommuneDependance" table="DEPENDANCE_COMMUNE">
+		<id name="dependance" column="ID_DEPENDANCE" type="int" length="4">
+		</id>
+		<property name="annee" column="ANNEE" type="int" length="4" />
+		<set name="communes" table="COMMUNE_DEPENDANCE">
+			<key column="DEPENDANCE" foreign-key="COMMUNE_DEPENDANCE_ETR_DCOM_0"></key>
+			<many-to-many class="Commune" column="COMMUNE" unique="true"
+				 />
+		</set>
+	</class>
+</hibernate-mapping>
+

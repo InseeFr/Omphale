@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body bgcolor="white">
+Package principal de omphale-core-result
+<br>
+<br>
+Classes de services qui permettent de :
+<br>
+- lancer Pdf (classe {@link fr.insee.omphale.core.result.service.lancer.LancementPdfService})
+<br>
+- de zipper un fichier (classe {@link fr.insee.omphale.core.result.service.lancer.Zip})
+<br>
+- d'envoyer un mail (classe {@link fr.insee.omphale.core.result.service.lancer.Mail})
+<br>
+- d'envoyer un fichier par FTP (classe {@link fr.insee.omphale.core.result.service.lancer.Ftp})
+<br>
+<br>
+la classe {@link fr.insee.omphale.core.result.service.lancer.LancementPdfService} utilise
+ pour aller chercher les données dans la base de données :
+<br>
+* {@link fr.insee.omphale.core.result.service.donnees.tableau1.impl.PopulationService}, {@link fr.insee.omphale.core.result.service.donnees.tableau1.impl.EDVService},
+{@link fr.insee.omphale.core.result.service.donnees.tableau1.impl.ICFService}, {@link fr.insee.omphale.core.result.service.donnees.tableau1.impl.AgeMoyenService}
+(données tableau Population, Indicateurs, Age moyen)
+<br>
+* {@link fr.insee.omphale.core.result.service.donnees.tableau2.impl.FluxService}, {@link fr.insee.omphale.core.result.service.donnees.tableau2.impl.ToutesZonesService},
+{@link fr.insee.omphale.core.result.service.donnees.tableau2TousAgesPlus5.impl.TousAgesPlus5Service}, {@link fr.insee.omphale.core.result.service.donnees.tableau2TousAgesPlus5.impl.TousAgesPlus5ToutesZonesService}
+(données tableau Flux avec les principales zones d'échange)
+<br>
+* {@link fr.insee.omphale.core.result.service.donneesGraphiques.impl.PointPyramideService}, {@link fr.insee.omphale.core.result.service.donneesGraphiques.impl.PointPopulationService},
+{@link fr.insee.omphale.core.result.service.donneesGraphiques.impl.PointCourbeService}, {@link fr.insee.omphale.core.result.service.donneesGraphiques.impl.DecPointService},
+{@link fr.insee.omphale.core.result.service.donneesGraphiques.impl.PointSoldeFluxService}, {@link fr.insee.omphale.core.result.service.donneesGraphiques.impl.PointFluxService}
+{@link fr.insee.omphale.core.result.service.donneesGraphiques.impl.PointFluxRangeService}
+(données graphiques flux)
+<br>
+<br>
+la classe {@link fr.insee.omphale.core.result.service.lancer.LancementPdfService} fait appel à
+{@link fr.insee.omphale.core.result.service.projectionItext.impl.A1ItextService} pour écrire le Pdf
+@see fr.insee.omphale.core.result.service.donnees.tableau1.impl
+@see fr.insee.omphale.core.result.service.donnees.tableau1.impl.PopulationService
+@see fr.insee.omphale.core.result.service.donnees.tableau1.impl.EDVService
+@see fr.insee.omphale.core.result.service.donnees.tableau1.impl.ICFService
+@see fr.insee.omphale.core.result.service.donnees.tableau1.impl.AgeMoyenService
+@see fr.insee.omphale.core.result.service.donnees.tableau2.impl
+@see fr.insee.omphale.core.result.service.donnees.tableau2.impl.FluxService
+@see fr.insee.omphale.core.result.service.donnees.tableau2.impl.ToutesZonesService
+@see fr.insee.omphale.core.result.service.donnees.tableau2TousAgesPlus5.impl.TousAgesPlus5Service
+@see fr.insee.omphale.core.result.service.donnees.tableau2TousAgesPlus5.impl.TousAgesPlus5ToutesZonesService
+@see fr.insee.omphale.core.result.service.donnees.graphiques.impl
+@see fr.insee.omphale.core.result.service.donnees.graphiques.impl.PointPyramideService
+@see fr.insee.omphale.core.result.service.donnees.graphiques.impl.PointPopulationService
+@see fr.insee.omphale.core.result.service.donnees.graphiques.impl.PointCourbeService
+@see fr.insee.omphale.core.result.service.donnees.graphiques.impl.DecPointService
+@see fr.insee.omphale.core.result.service.donnees.graphiques.impl.PointSoldeFluxService
+@see fr.insee.omphale.core.result.service.donnees.graphiques.impl.PointFluxService
+@see fr.insee.omphale.core.result.service.donnees.graphiques.impl.PointFluxRangeService
+</body>
+</html>

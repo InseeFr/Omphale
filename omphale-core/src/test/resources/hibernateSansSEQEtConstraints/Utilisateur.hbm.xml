@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.domaine">
+	<class name="Utilisateur" table="USER_OMPHALE">
+		<id name="id" column="ID_USER" type="string" length="6">
+		</id>
+		<property name="libelle" column="LIBELLE" type="string"
+			length="50" />
+		<property name="email" column="EMAIL" type="string" length="50" />
+		<property name="idep" column="IDEP" type="string"></property>
+		<property name="role" column="ROLE" type="integer" />
+	</class>
+</hibernate-mapping>
+

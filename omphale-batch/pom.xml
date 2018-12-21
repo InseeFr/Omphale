@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>omphale-batch</artifactId>
+	<packaging>jar</packaging>
+	<version>3.3.7</version>
+
+	<!-- Héritage du POM Insee-->
+	<parent>
+	  	<groupId>fr.insee.omphale</groupId>
+	  	<artifactId>omphale</artifactId>
+	  	<version>3.3.7</version>
+	</parent>
+
+	<!--
+		Les propriétés servent à centraliser des informations qui sont
+		utilisées ailleurs.
+	-->
+	<dependencies>
+	
+		<dependency>
+			<groupId>fr.insee.omphale</groupId>
+		  	<artifactId>omphale-core</artifactId>
+		  	<version>3.3.7</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>fr.insee.config</groupId>
+			<artifactId>insee-config-batch</artifactId>
+			<version>2.2.3</version>
+			<scope>compile</scope>
+		</dependency>
+
+
+		<dependency>
+   			<groupId>org.apache.ant</groupId>
+   			<artifactId>ant</artifactId>
+   			<version>1.8.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+			<version>3.0.11.Final</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>2.21</version>
+		</dependency>
+		<dependency>
+    	<groupId>org.glassfish.jersey.media</groupId>
+		    <artifactId>jersey-media-jaxb</artifactId>
+		    <version>2.21</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.glassfish.jersey.media</groupId>
+		    <artifactId>jersey-media-multipart</artifactId>
+		    <version>2.21</version>
+		</dependency>
+		<dependency>
+			<groupId>fr.insee.archi</groupId>
+			<artifactId>spoc-core</artifactId>
+			<version>0.2.2</version>
+		</dependency>
+				<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>commons-lang</groupId>
+		    <artifactId>commons-lang</artifactId>
+		    <version>2.4</version>
+		    <type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+		    <groupId>commons-collections</groupId>
+		    <artifactId>commons-collections</artifactId>
+		    <version>3.1</version>
+		    <type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+		    <groupId>jfree</groupId>
+		    <artifactId>jfreechart</artifactId>
+		    <version>1.0.13</version>
+		    <type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+		    <groupId>jfree</groupId>
+		    <artifactId>jcommon</artifactId>
+		    <version>1.0.15</version>
+		    <type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.lowagie</groupId>
+		    <artifactId>itext</artifactId>
+		    <version>2.1.5</version>
+		    <type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+		    <groupId>commons-email</groupId>
+		    <artifactId>commons-email</artifactId>
+		    <version>1.1</version>
+		    <type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+		    <groupId>commons-net</groupId>
+		    <artifactId>commons-net</artifactId>
+		    <version>3.3</version>
+		    <type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+	<properties>
+		<insee.nomLivraison>${project.artifactId}</insee.nomLivraison>
+	</properties>
+
+	<!-- Nom et description du projet-->
+	<name>Nom du projet</name>
+	<description>Description du projet</description>
+
+	<!-- Adresse URL de la page d'accueil du projet -->
+	<url>http://www.insee.fr</url>
+
+	<!--
+		On définit ici le lien vers le tracker d'anomalies du projet. L'URL
+		est disponible sur la page d'accueil du projet sur GForge
+	-->
+	<issueManagement>
+		<system>gforge.insee.fr</system>
+		<url>http://gforge.insee.fr</url>
+	</issueManagement>
+
+	<!--
+		Le tag <build> permet de gérer des éléments ayant trait à la
+		construction du projet par Maven, notamment la configuration des
+		plugins quand le comportement par défaut de ceux-ci n'est pas adapté.
+	-->
+	<build>
+		<!--
+			La configuration des plugins se fait au cas par cas, à l'aide de tags
+			<plugin>, eux-mêmes contenus dans un tag <plugins>. Le tag se
+			présente de la manière suivante (l'exemple est pris sur le plugin
+			"site" dans le fichier pom Insee) : <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-site-plugin</artifactId> <version>2.0.1</version>
+			<configuration> <locales>fr</locales> </configuration> </plugin> Les
+			tags <groupId>, <artifactId> et <version> servent à identifier le
+			plugin que vous souhaitez ajouter configurer. Le tag <configuration>
+			est celui qui va porter les différents éléments de configuration du
+			plugin. Il va de soi que le contenu de ce tag change d'un plugin à
+			l'autre. Dans l'exemple, nous demandons au plugin "site" (chargé de
+			créer le site HTML documentaire Maven) de générer un site en
+			français. Quasiment tous les plugins possèdent un site Internet, sur
+			lequel on pourra trouver les informations nécessaires à leur
+			configuration.
+		-->
+		<plugins>
+			<!--
+				Ce plugin est celui qui est utilisé pour construire des archives
+				personnalisées à partir d'un projet. Le descripteur
+				"assembly-bin.xml" construit une archive contenant l'archive de
+				l'application ainsi que ses dépendances. Le descripteur
+				"assembly-batch.xml" construit une archive contenant l'archive
+				précédente, les fichiers de properties de l'application, et une
+				fiche de livraison, selon les normes de livraison pour les
+				applications batch.
+			-->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2-beta-5</version>
+				<configuration>
+					<descriptors>
+						<descriptor>src/main/resources/assembly/assembly-src.xml</descriptor>
+						<descriptor>src/main/resources/assembly/assembly-CEI.xml</descriptor>
+					</descriptors>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>build-classpath</goal>
+						</goals>
+						<configuration>
+							<outputFile>target/windows_cp.properties</outputFile>
+							<fileSeparator>\\</fileSeparator>
+							<pathSeparator>;</pathSeparator>
+							<outputFilterFile>true</outputFilterFile>
+
+							<!-- dossier contenant les jar -->
+							<prefix>..\\lib\</prefix>
+						</configuration>
+						<id>windows_classpath</id>
+						<phase>prepare-package</phase>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>Inject classpath</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<copy todir="target/doc">
+									<fileset dir="doc">
+										<filename name="*.*" />
+									</fileset>
+								</copy>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<excludes>
+						<exclude>**/omphale-dev.properties</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+		        <artifactId>maven-compiler-plugin</artifactId>
+		        <version>2.3.2</version>
+		        <executions>
+		          <execution>
+		            <id>default-testCompile</id>
+		            <phase>test-compile</phase>
+		            <goals>
+		              <goal>testCompile</goal>
+		            </goals>
+		            <configuration>
+		              <source>1.7</source>
+		              <target>1.7</target>
+		            </configuration>
+		          </execution>
+		          <execution>
+		            <id>default-compile</id>
+		            <phase>compile</phase>
+		            <goals>
+		              <goal>compile</goal>
+		            </goals>
+		            <configuration>
+		              <source>1.7</source>
+		              <target>1.7</target>
+		            </configuration>
+		          </execution>
+		        </executions>
+		        <configuration>
+		          <source>1.7</source>
+		          <target>1.7</target>
+		        </configuration>
+	      </plugin>
+		</plugins>
+	</build>
+
+</project>

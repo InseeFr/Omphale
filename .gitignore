@@ -1,0 +1,9 @@
+.settings/
+.svn/
+.externalToolBuilders/
+built/
+node_modules/
+target/
+.project
+.classpath
+*.class

@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.domaine.geographie">
+	<class name="Zone" table="ZONE">
+		<id name="id" type="string" length="5" column="ID_ZONE">
+			<generator class="native">
+				<param name="sequence">SEQ_ZONE_GEO4</param>
+			</generator>
+		</id>
+		<discriminator
+			formula="decode(type_zone_standard,4,0,5,0,6,0,type_zone_standard)"
+			type="string" insert="false"></discriminator>
+		<property name="nom" column="NOM" type="string" length="20" />
+		<property name="libelle" column="LIBELLE" type="string"
+			length="50" />
+		<many-to-one name="typeZoneStandard" class="TypeZoneStandard"
+			column="TYPE_ZONE_STANDARD" foreign-key="ZONE_ETR_TZS_0"></many-to-one>
+		<many-to-one name="utilisateur" class="fr.insee.omphale.domaine.Utilisateur"
+			column="ID_USER" foreign-key="ZONE_ETR_USER_0"></many-to-one>
+		<set name="departementsImpactes" table="DEPARTEMENT_IMPACT">
+			<key foreign-key="DEPARTEMENT_IMPACT_ETR_ZONE_0">
+				<column name="ZONE" />
+			</key>
+			<many-to-many class="Departement" column="DEPT"
+				foreign-key="DEPARTEMENT_IMPACT_ETR_DEPT_0"></many-to-many>
+		</set>
+		<subclass discriminator-value="0" name="ZoneClassique">
+			<set name="communes" table="COMMUNE_DE_ZONE">
+				<key>
+					<column name="ZONE" />
+				</key>
+				<many-to-many class="Commune" column="COMMUNE" />
+			</set>
+		</subclass>
+		<subclass discriminator-value="1" name="ZoneStandardFrance">
+			<set name="communes" table="COMMUNE_DE_ZSF">
+				<key>
+					<column name="ZONE" />
+				</key>
+				<many-to-many class="Commune" column="COMMUNE" />
+			</set>
+		</subclass>
+		<subclass discriminator-value="2" name="ZoneStandardAncienneRegion">
+			<set name="communes" table="COMMUNE_DE_ZSR">
+				<key>
+					<column name="ZONE" />
+				</key>
+				<many-to-many class="Commune" column="COMMUNE" />
+			</set>
+		</subclass>
+		<subclass discriminator-value="6" name="ZoneStandardRegion">
+            <set name="communes" table="COMMUNE_DE_ZSGR">
+                <key>
+                    <column name="ZONE" />
+                </key>
+                <many-to-many class="Commune" column="COMMUNE" />
+            </set>
+        </subclass>
+		<subclass discriminator-value="3" name="ZoneStandardDepartement">
+			<set name="communes" table="COMMUNE_DE_ZSD">
+				<key>
+					<column name="ZONE" />
+				</key>
+				<many-to-many class="Commune" column="COMMUNE" />
+			</set>
+		</subclass>
+	</class>
+</hibernate-mapping>
+

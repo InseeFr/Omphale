@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.domaine.projection">
+	<class name="Hypothese" table="USER_HYPOTHESE">
+		<id name="id" column="ID_HYPOTHESE" type="integer">
+			<generator class="native">
+				<param name="sequence">SEQ_HYPOTHESE</param>
+			</generator>
+		</id>
+		<property name="nom" column="NOM" type="string" length="20"></property>
+		<many-to-one name="typeEntite" class="TypeEntite" column="TYPE_ENTITE"
+			foreign-key="USER_HYPOTHESE_ETR_TENT_0"></many-to-one>
+		<property name="anneeDebut" column="ANNEE_DEB" type="integer"
+			length="4"></property>
+		<property name="anneeFin" column="ANNEE_FIN" type="integer"
+			length="4"></property>
+		<property name="ageDebut" column="AGE_DEB" type="integer"
+			length="3"></property>
+		<property name="ageFin" column="AGE_FIN" type="integer"
+			length="3"></property>
+		<property name="sexeDebut" column="SEXE_DEB" type="integer"
+			length="1"></property>
+		<property name="sexeFin" column="SEXE_FIN" type="integer"
+			length="1"></property>
+		<property name="standard" column="STANDARD" type="boolean">
+		</property>
+		<property name="libelle" column="LIBELLE" type="string"
+			length="50"></property>
+		<many-to-one name="utilisateur" class="fr.insee.omphale.domaine.Utilisateur"
+			column="ID_USER" foreign-key="USER_HYPOTHESE_ETR_USER_0"></many-to-one>
+		<property name="dateCreation" column="DATE_CREATION" type="timestamp"></property>
+	</class>
+</hibernate-mapping>
+

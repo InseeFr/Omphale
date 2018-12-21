@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.domaine.projection">
+	<class name="Projection" table="DEF_PROJECTION">
+		<id name="id" column="ID_PROJECTION" type="integer">
+		</id>
+		<property name="nom" column="NOM" type="string" length="20"></property>
+		<property name="anneeReference" column="ANNEE_REFERENCE"
+			type="integer" length="4"></property>
+		<property name="anneeHorizon" column="ANNEE_HORIZON" type="integer"
+			length="4"></property>
+		<property name="standard" column="STANDARD" type="boolean">
+		</property>
+		<property name="validation" column="VALIDATION" type="boolean"></property>
+		<property name="calage" column="CALAGE" type="boolean"></property>
+		<property name="englobante" column="ENGLOBANTE" type="integer"></property>
+		<property name="actifs" column="ACTIFS" type="boolean"></property>
+		<property name="menages" column="MENAGES" type="boolean"></property>
+		<property name="eleves" column="ELEVES" type="boolean"></property>
+		<property name="parGeneration" column="PYRAMIDE_GENERATION"
+			type="boolean"></property>
+		<property name="dateCreation" column="DATE_CREATION" type="timestamp"></property>
+		<property name="libelle" column="LIBELLE" type="string"
+			length="50"></property>
+		<many-to-one name="utilisateur" class="fr.insee.omphale.domaine.Utilisateur"
+			column="ID_USER" ></many-to-one>
+		<many-to-one name="projectionEtalon" class="Projection"
+			column="ID_PROJ_ETALON" ></many-to-one>
+		<many-to-one name="projectionEnglobante" class="Projection"
+			column="ID_PROJ_ENGLOBANTE" ></many-to-one>
+		<many-to-one name="zonage"
+			class="fr.insee.omphale.domaine.geographie.Zonage" column="ID_ZONAGE"
+			></many-to-one>
+		<many-to-one name="scenario" class="Scenario" column="ID_SCENARIO"
+			></many-to-one>
+		<set name="evolutionsLocalisees" inverse="true" fetch="subselect">
+            <key>
+                <column name="ID_PROJECTION" not-null="true" />
+            </key>
+            <one-to-many class="EvolutionLocalisee" />
+        </set>
+	</class>
+</hibernate-mapping>
+

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.domaine.projection">
+	<class name="ValeurCubeHypothese" table="CB_HYPOTHESE">
+		<composite-id class="ValeurCubeHypotheseId" name="id">
+			<key-many-to-one name="hypothese" class="Hypothese"
+				foreign-key="CB_HYPOTHESE_ETR_UHY_0" column="ID_HYPOTHESE">
+			</key-many-to-one>
+			<key-property name="age" column="AGE" type="int" length="3"></key-property>
+			<key-property name="sexe" column="SEXE" type="int"
+				length="1"></key-property>
+			<key-property name="annee" column="ANNEE" type="int"
+				length="4"></key-property>
+		</composite-id>
+		<property name="valeur" column="VALEUR" type="double"></property>
+	</class>
+</hibernate-mapping>
+

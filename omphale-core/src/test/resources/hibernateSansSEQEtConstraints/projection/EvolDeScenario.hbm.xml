@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.domaine.projection">
+	<class name="EvolDeScenario" table="EVOL_DE_SCENAR">
+		<composite-id name="id" class="EvolDeScenarioId">
+			<key-many-to-one name="evolutionNonLocalisee" class="EvolutionNonLocalisee"
+				column="ID_EVOL_NON_LOC" foreign-key="EVOL_DE_SCENAR_ETR_EVNL_0"></key-many-to-one>
+			<key-many-to-one name="scenario" class="Scenario"
+				column="ID_SCENARIO" foreign-key="EVOL_DE_SCENAR_ETR_SCNL_0"></key-many-to-one>
+		</composite-id>
+		<property name="rang" column="RANG" type="integer"></property>
+	</class>
+</hibernate-mapping>
+

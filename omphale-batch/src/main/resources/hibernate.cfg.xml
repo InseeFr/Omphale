@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-configuration PUBLIC 
+	"-//Hibernate/Hibernate Configuration DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+	<!--
+		<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate
+		Configuration DTD//EN"
+		"file:c:\hibernate\hibernate-configuration-3.0.dtd">
+	-->
+<hibernate-configuration>
+	<session-factory>
+
+		<!--
+			utilisation de la config Insee : les paramètres d'appel sont dans
+			parametres.properties
+		-->
+		<property name="hibernate.connection.provider_class">
+			fr.insee.config.hibernate.InseeConnectionProvider</property>
+		<property name="hibernate.connection.insee.poolName">omphale</property>
+
+		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<!--
+			Use thread-bound persistence context propagation, scoped to the
+			transaction
+		-->
+		<property name="current_session_context_class">thread</property>
+
+		<mapping resource="hibernate/geographie/Zonage.hbm.xml" />
+		<mapping resource="hibernate/geographie/Zone.hbm.xml" />
+		<mapping resource="hibernate/projection/Projection.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

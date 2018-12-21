@@ -1,0 +1,40 @@
+<!DOCTYPE hibernate-configuration PUBLIC 
+	"-//Hibernate/Hibernate Configuration DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+
+
+		<property name="hibernate.connection.provider_class">
+			fr.insee.config.hibernate.InseeConnectionProvider</property>
+		<property name="hibernate.connection.insee.poolName">hsqldb</property>
+		<property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+		<property name="hibernate.show_sql">false</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.cglib.use_reflection_optimizer">true</property>
+		<property name="hibernate.connection.autocommit">false</property>
+		<property name="current_session_context_class">thread</property>	
+		<mapping resource="hibernateSansSEQEtConstraints/Utilisateur.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/projection/Projection.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/projection/EvolutionLocalisee.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/geographie/Zonage.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/projection/Scenario.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/projection/EvolDeScenario.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/projection/EvolutionNonLocalisee.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/projection/Composante.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/geographie/Zone.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/geographie/Commune.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/geographie/Departement.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/geographie/Region.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/projection/TypeParam.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/geographie/TypeZoneStandard.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/geographie/CommuneDependance.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/geographie/GroupeEtalon.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/projection/Hypothese.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/projection/MethodeEvolution.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/projection/ParamMethodeEvolution.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/projection/TypeEntite.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/projection/ValeurCubeHypothese.hbm.xml" />
+		<mapping resource="hibernateSansSEQEtConstraints/projection/ProjectionLancee.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.domaine.projection">
+	<class name="ParamMethodeEvolution" table="PARAM_METH_EVOL">
+		<composite-id>
+			<key-many-to-one name="methode" class="MethodeEvolution"
+				column="METHODE_EVOL" foreign-key="PARAM_METH_EVOL_ETR_MEV_0"></key-many-to-one>
+			<key-many-to-one name="typeParam" class="TypeParam"
+				column="TYPE_PARAM" foreign-key="PARAM_METH_EVOL_ETR_TPAR_0"></key-many-to-one>
+		</composite-id>
+		<property name="rang" column="RANG" type="integer" length="1"></property>
+		<property name="valDef" column="VAL_DEF" type="double"></property>
+		<property name="libelle" column="LIBELLE" type="string"
+			length="50"></property>
+	</class>
+</hibernate-mapping>
+

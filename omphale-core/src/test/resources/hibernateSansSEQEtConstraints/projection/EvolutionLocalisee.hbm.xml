@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.domaine.projection">
+	<class name="EvolutionLocalisee" table="EVOL_LOCALISE" discriminator-value="0">
+		<id name="id" column="ID_EVOL_LOCALISE">
+			<generator class="native">
+				<param name="sequence">SEQ_EVOL_LOC</param>
+			</generator>
+		</id>
+		<discriminator formula="(CASE ZONE_DESTINATION WHEN null THEN 0 ELSE 1)"></discriminator>
+		<many-to-one name="evolNonLoc" class="EvolutionNonLocalisee"
+			column="ID_EVOL_NON_LOC" foreign-key="EVOL_LOCALISE_ETR_EVNL_0"></many-to-one>
+		<many-to-one name="projection" class="Projection" column="ID_PROJECTION"
+			foreign-key="EVOL_LOCALISE_ETR_DPROJ_0"></many-to-one>
+		<many-to-one name="zone"
+			class="fr.insee.omphale.domaine.geographie.Zone" column="ZONE"
+			foreign-key="EVOL_LOCALISE_ETR_ZONE_1"></many-to-one>
+		<many-to-one name="composante" class="Composante" column="COMPOSANTE"
+			foreign-key="EVOL_LOCALISE_ETR_TQT_0"></many-to-one>
+		<property name="rang" column="RANG" type="integer"></property>
+		<subclass name="EvolutionBilocalisee" discriminator-value="1">
+			<many-to-one name="zoneDestination"
+				class="fr.insee.omphale.domaine.geographie.Zone" column="ZONE_DESTINATION"
+				foreign-key="EVOL_LOCALISE_ETR_ZONE_2"></many-to-one>
+		</subclass>
+	</class>
+</hibernate-mapping>
+

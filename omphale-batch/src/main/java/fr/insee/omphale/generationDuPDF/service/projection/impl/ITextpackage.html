@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body bgcolor="white">
+Package de services qui permettent d'écrire le pdf à partir des données
+<br>
+classe principale : {@link fr.insee.omphale.core.result.service.projectionItext.impl.A1ItextService},
+(appelée par {@link fr.insee.omphale.core.result.service.lancer.LancementPdfService})
+<br>
+<br>
+{@link fr.insee.omphale.core.result.service.projectionItext.impl.A1ItextService} utilise les autres classes du package :
+<br>
+- {@link fr.insee.omphale.core.result.service.projectionItext.impl.AFont} (définition des font utilisées)
+<br>
+- {@link fr.insee.omphale.core.result.service.projectionItext.impl.BPage1Service} (écriture de la première page du Pdf)
+<br>
+- {@link fr.insee.omphale.core.result.service.projectionItext.impl.CExpertiseGenerale} (écriture du nom de la zone et du titre "Expertise générale")
+<br>
+- {@link fr.insee.omphale.core.result.service.projectionItext.impl.DTableau1Service} (écriture du tableau Population, Indicateurs, Age moyen)
+<br>
+- {@link fr.insee.omphale.core.result.service.projectionItext.impl.EGraphiques1Service} (écriture des graphiques Pyramide des âges, Evolution de la population, Quotients de fécondité, Quotients de décès)
+<br>
+- {@link fr.insee.omphale.core.result.service.projectionItext.impl.FExpertiseFlux} (écriture du titre "Expertise flux")
+<br>
+- {@link fr.insee.omphale.core.result.service.projectionItext.impl.GTableau2Service} (écriture du tableau Flux avec les principales zones d'échange)
+<br>
+- {@link fr.insee.omphale.core.result.service.projectionItext.impl.HFluxAuRP} (écriture du titre "Flux au RP")
+<br>
+- {@link fr.insee.omphale.core.result.service.projectionItext.impl.IGraphiques2Service} (écriture des graphiques flux)
+<br>
+- {@link fr.insee.omphale.core.result.service.projectionItext.impl.JSignets} (écriture des signets)
+
+</body>
+</html>

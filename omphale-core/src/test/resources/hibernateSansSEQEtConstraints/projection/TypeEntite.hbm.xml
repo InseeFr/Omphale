@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.domaine.projection">
+	<class name="TypeEntite" table="TYPE_ENTITE">
+		<id name="code" column="TYPE_ENTITE" type="string" length="5">
+		</id>
+		<property name="libelle" column="LIBELLE" type="string"
+			length="50" />
+		<property name="age" column="DIMENSION_AGE" type="boolean"></property>
+		<property name="sexe" column="DIMENSION_SEXE" type="boolean"></property>
+		<property name="exhaustivite" column="CTRL_EXHAUST" type="boolean"></property>
+		<property name="restrictionAge" column="RESTRICTION_AGE" type="boolean"></property>
+		<property name="min" column="VAL_MIN" type="double"></property>
+		<property name="max" column="VAL_MAX" type="double"></property>
+	</class>
+</hibernate-mapping>
+

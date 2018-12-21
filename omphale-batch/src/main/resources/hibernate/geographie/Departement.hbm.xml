@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="fr.insee.omphale.core.result.domaine.geographie">
+	<class name="Departement" table="DEPARTEMENT">
+		<id name="id" column="ID_DEPT" type="string" length="3">
+		</id>
+		<property name="nom" column="NOM" type="string" length="20" />
+		<property name="libelle" column="LIBELLE" type="string"
+			length="50" />
+	</class>
+</hibernate-mapping>
+

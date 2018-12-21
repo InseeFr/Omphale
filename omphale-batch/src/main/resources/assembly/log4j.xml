@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!-- Plateforme : <%= plateforme %> -->
+<!-- Version : <%= version_application %> -->
+<!-- Fichier : <%= application %>.log4j.xml.erb -->
+
+<log4j:configuration>
+
+  <!-- ######### -->
+  <!-- APPENDERS -->
+  <!-- ######### -->
+
+  <!-- Appenders -->
+  <!-- Déclaration de l'appender console -->
+  <appender name="console" class="org.apache.log4j.ConsoleAppender">
+    <param name="encoding" value="UTF-8"/>
+    <param name="ImmediateFlush" value="true"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%5p %d{DATE} - %X{UserID} - %c{1}:%-4L - %m%n"/>
+    </layout>
+  </appender>
+  
+
+  
+  <!-- ####### -->
+  <!-- LOGGERS -->
+  <!-- ####### -->
+  
+  <logger name="org.apache" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="console"/>
+  </logger>
+    
+
+  
+  <logger name="fr.insee" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="console"/>
+  </logger>
+  
+  
+  
+
+  
+</log4j:configuration>
