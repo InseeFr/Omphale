@@ -22,7 +22,7 @@
 		<commons-collections.version>3.2.1</commons-collections.version>
 		
 		<slf4j.version>1.6.1</slf4j.version>
-		<ant.version>1.7.0</ant.version>
+		<ant.version>1.10.11</ant.version>
 
 		<oracle.version>11.2.0.2</oracle.version>
 		<hibernate.version>3.6.10.Final</hibernate.version>
