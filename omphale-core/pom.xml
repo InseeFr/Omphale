@@ -37,7 +37,7 @@
 		<dbunit.version>2.4.8</dbunit.version>
 		<hsqldb.version>1.8.0.7</hsqldb.version>
 		
-		<xerces.version>2.9.1</xerces.version>
+		<xerces.version>2.12.2</xerces.version>
 		<velocity.version>1.5</velocity.version>
 		
 		<insee.nomLivraison>${project.artifactId}</insee.nomLivraison>
